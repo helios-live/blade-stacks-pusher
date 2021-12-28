@@ -19,6 +19,7 @@ composer require ideatocode/blade-stacks-pusher
 ## Usage
 
 ```php
+use Ideatocode\BladeStacksPusher\Facades\BSP;
 
 BSP::push('scripts', function () {
     return '<script>console.log("It Works!")</script>';
