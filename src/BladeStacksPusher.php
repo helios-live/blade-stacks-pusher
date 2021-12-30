@@ -4,15 +4,16 @@ namespace Ideatocode\BladeStacksPusher;
 
 class BladeStacksPusher
 {
-    protected static $table = [];
 
-    public function push($stack, mixed $callback)
+    public function push($stack, mixed $param)
     {
-        if (!isset(self::$table[$stack])) {
-            $table = new Stack($stack);
-            self::$table[$stack] = &$table;
-            app('view')->startPush($stack, $table);
-        }
-        self::$table[$stack]->push($callback);
+        $item = new StackItem($stack, $param);
+        app('view')->startPush($stack, $item);
+    }
+
+    public function prepend($stack, mixed $param)
+    {
+        $item = new StackItem($stack, $param);
+        app('view')->startPrepend($stack, $item);
     }
 }
